@@ -7,26 +7,19 @@
 <html>
 <head>
 <meta charset="ISO-8859-1">
-<title>Party List</title>
+<title>Party Admin</title>
 <link href="https://stackpath.bootstrapcdn.com/bootswatch/4.5.0/cyborg/bootstrap.min.css" rel="stylesheet" integrity="sha384-GKugkVcT8wqoh3M8z1lqHbU+g6j498/ZT/zuXbepz7Dc09/otQZxTimkEMTkRWHP" crossorigin="anonymous">
 </head>
 <body>
 
-	<main class="container">
+
+<main class="container">
 
 		<section class="jumbotron">
 
-			<h2 class="display-1">Parties</h2>
+			<h2 class="display-1">Party Admin</h2>
 			
-			<form action="/parties">
-
-				<input type="text" name="keyword" placeholder="Search party by name" />
-
-				<button class="btn btn-dark">Search</button>
-				
-			</form>
-			
-			<a class="btn btn-dark" href="/party-admin">Admin Options</a>
+			<a class="btn btn-dark" href="/">Home</a>
 			
 		</section>
 
@@ -40,24 +33,34 @@
 					<tr>
 						<td><c:out value="${party.name}" /></td>
 						<td><c:out value="${party.date}" /></td>
-						<td><a class="btn btn-dark" href="/vote?id=${party.id}">ADD/VOTE</a></td>
-						<td><a class="btn btn-dark" href="/review?id=${party.id}">Review</a></td>
-						
-			
+						<td><a class="btn btn-dark" href="/edit?id=${party.id}">Edit</a></td>
+						<td><a class="btn btn-danger" href="/delete/${party.id}">Delete</a></td>
 					</tr>
 				</c:forEach>
 			</table>
 
 			
-			
-
-
-
+		</section>
+		
+		
+		<section>
+			<h5 class="display-3">Add a new party:</h5>
+		
+			<form action="/add-party" method="post">
+				<label>Name:</label>
+				<input type="text" name="name">
+				<label>Date:</label>
+				<input type="date" name="date">
+				
+				<button class="btn btn-dark">Add</button>
+				 
+			</form>
 		</section>
 		
 		
 
 	</main>
+
 
 </body>
 </html>

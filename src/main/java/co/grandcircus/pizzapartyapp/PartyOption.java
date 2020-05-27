@@ -4,6 +4,7 @@ import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
+import javax.persistence.ManyToOne;
 import javax.persistence.Table;
 
 @Entity
@@ -21,6 +22,9 @@ public class PartyOption {
 	private String description;
 	
 	private int votes = 0;
+	
+	@ManyToOne
+	private Party party;
 
 	public Long getId() {
 		return id;
@@ -66,6 +70,14 @@ public class PartyOption {
 	public String toString() {
 		return "PartyOption [id=" + id + ", name=" + name + ", type=" + type + ", description=" + description
 				+ ", votes=" + votes + "]";
+	}
+
+	public Party getParty() {
+		return party;
+	}
+
+	public void setParty(Party party) {
+		this.party = party;
 	}
 	
 	

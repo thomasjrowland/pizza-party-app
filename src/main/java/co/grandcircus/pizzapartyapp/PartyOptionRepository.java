@@ -10,4 +10,8 @@ public interface PartyOptionRepository extends JpaRepository<PartyOption, Long>{
 
 	List<PartyOption> findByTypeContainingAndVotesGreaterThan(String type, int votes);
 
+	List<PartyOption> findByPartyId(Long id);
+
+	List<PartyOption> findByPartyIdAndVotesGreaterThan(Long id, int i);
+
 }
